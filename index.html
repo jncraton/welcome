@@ -1,263 +1,250 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Before Class</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Before Class</title>
 
-  <style>
-    :root {
-      color-scheme: dark;
-    }
+    <style>
+      :root {
+        color-scheme: dark;
+      }
 
-    * {
-      box-sizing: border-box;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    html,
-    body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-    }
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+      }
 
-    body {
-      overflow: hidden;
-      background: #172625;
-      color: white;
-      font-family: Georgia, 'Times New Roman', serif;
-    }
+      body {
+        overflow: hidden;
+        background: #172625;
+        color: white;
+        font-family: Georgia, 'Times New Roman', serif;
+      }
 
-    main {
-      width: 100%;
-      height: 100%;
-    }
+      main {
+        width: 100%;
+        height: 100%;
+      }
 
-    section {
-      position: absolute;
-      inset: 0;
-      display: grid;
-      place-items: center;
-      padding: 2rem;
-      text-align: center;
-      background-position: center;
-      background-size: cover;
-      opacity: 0;
-      transition: opacity 2s ease;
-    }
-
-    section::before {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(rgba(0, 0, 0, .15), rgba(0, 0, 0, .5)),
-        linear-gradient(90deg, rgba(0, 0, 0, .25), transparent 65%);
-      content: '';
-    }
-
-    section.active {
-      opacity: 1;
-    }
-
-    div {
-      position: relative;
-      z-index: 1;
-      max-width: 52rem;
-      padding: 2rem 2.5rem;
-      border-radius: 1rem;
-      background: rgba(0, 0, 0, .34);
-      box-shadow: 0 1rem 4rem rgba(0, 0, 0, .2);
-      backdrop-filter: blur(2px);
-    }
-
-    h1,
-    p {
-      margin: 0;
-      font-weight: normal;
-      text-shadow: 0 .15rem .5rem rgba(0, 0, 0, .5);
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 6vw, 5rem);
-      line-height: 1.1;
-    }
-
-    p {
-      margin-top: 1.25rem;
-      color: rgba(255, 255, 255, .8);
-      font-size: clamp(1.2rem, 2.8vw, 2rem);
-      line-height: 1.45;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
       section {
-        transition: none;
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        text-align: center;
+        background-position: center;
+        background-size: cover;
+        opacity: 0;
+        transition: opacity 2s ease;
       }
-    }
-  </style>
-</head>
 
-<body>
-  <main aria-live="polite">
-    <section
-      class="slide"
-      data-background="maroon-bells.jpg">
-      <div class="content">
-        <h1>Class has begun</h1>
-        <p>Take two minutes to prepare yourself</p>
-      </div>
-    </section>
+      section::before {
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.5)),
+          linear-gradient(90deg, rgba(0, 0, 0, 0.25), transparent 65%);
+        content: '';
+      }
 
-    <section
-      class="slide"
-      data-background="sunrise-maligne.jpg">
-      <div class="content">
-        <h1>Remove distractions</h1>
-        <p>Put away and silence phones</p>
-        <p>Close laptops for now</p>
-      </div>
-    </section>
+      section.active {
+        opacity: 1;
+      }
 
-    <section
-      class="slide"
-      data-background="mesa-arch.jpg">
-      <div class="content">
-        <p>What is one thing you hope to notice, understand, or contribute today?</p>
-      </div>
-    </section>
+      div {
+        position: relative;
+        z-index: 1;
+        max-width: 52rem;
+        padding: 2rem 2.5rem;
+        border-radius: 1rem;
+        background: rgba(0, 0, 0, 0.34);
+        box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(2px);
+      }
 
-    <section
-      class="slide"
-      data-background="hopetoun-falls.jpg">
-      <div class="content">
-        <p>Bring your attention, curiosity, and patience.</p>
-      </div>
-    </section>
+      h1,
+      p {
+        margin: 0;
+        font-weight: normal;
+        text-shadow: 0 0.15rem 0.5rem rgba(0, 0, 0, 0.5);
+      }
 
-    <section
-      class="slide"
-      data-background="sunrise-crete.jpg">
-      <div class="content">
-        <p>Who can think a single thought about themself, by themself?</p>
-      </div>
-    </section>
-  </main>
+      h1 {
+        font-size: clamp(2.2rem, 6vw, 5rem);
+        line-height: 1.1;
+      }
 
-  <div class="controls">
-    <button id="pauseButton" type="button">Pause</button>
-    <button id="fullscreenButton" type="button">Fullscreen</button>
-  </div>
+      p {
+        margin-top: 1.25rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-size: clamp(1.2rem, 2.8vw, 2rem);
+        line-height: 1.45;
+      }
 
-  <div class="progress" aria-hidden="true">
-    <div class="progress-bar" id="progressBar"></div>
-  </div>
+      @media (prefers-reduced-motion: reduce) {
+        section {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
 
-  <div class="credit">
-    Backgrounds:
-    <a
-      href="https://commons.wikimedia.org/wiki/Commons:Featured_pictures"
-      target="_blank"
-      rel="noreferrer">
-      Wikimedia Commons featured pictures
-    </a>
-  </div>
+  <body>
+    <main aria-live="polite">
+      <section class="slide" data-background="maroon-bells.jpg">
+        <div class="content">
+          <h1>Class has begun</h1>
+          <p>Take two minutes to prepare yourself</p>
+        </div>
+      </section>
 
-  <script>
-    const slides = [...document.querySelectorAll('.slide')]
-    const progressBar = document.getElementById('progressBar')
-    const pauseButton = document.getElementById('pauseButton')
-    const fullscreenButton = document.getElementById('fullscreenButton')
+      <section class="slide" data-background="sunrise-maligne.jpg">
+        <div class="content">
+          <h1>Remove distractions</h1>
+          <p>Put away and silence phones</p>
+          <p>Close laptops for now</p>
+        </div>
+      </section>
 
-    let currentSlide = 0
-    let timer
-    let paused = false
+      <section class="slide" data-background="mesa-arch.jpg">
+        <div class="content">
+          <p>What is one thing you hope to notice, understand, or contribute today?</p>
+        </div>
+      </section>
 
-    function preloadImage(url) {
-      return new Promise(resolve => {
-        const image = new Image()
+      <section class="slide" data-background="hopetoun-falls.jpg">
+        <div class="content">
+          <p>Bring your attention, curiosity, and patience.</p>
+        </div>
+      </section>
 
-        image.onload = resolve
-        image.onerror = resolve
-        image.src = url
+      <section class="slide" data-background="sunrise-crete.jpg">
+        <div class="content">
+          <p>Who can think a single thought about themself, by themself?</p>
+        </div>
+      </section>
+    </main>
+
+    <div class="controls">
+      <button id="pauseButton" type="button">Pause</button>
+      <button id="fullscreenButton" type="button">Fullscreen</button>
+    </div>
+
+    <div class="progress" aria-hidden="true">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="credit">
+      Backgrounds:
+      <a href="https://commons.wikimedia.org/wiki/Commons:Featured_pictures" target="_blank" rel="noreferrer">
+        Wikimedia Commons featured pictures
+      </a>
+    </div>
+
+    <script>
+      const slides = [...document.querySelectorAll('.slide')]
+      const progressBar = document.getElementById('progressBar')
+      const pauseButton = document.getElementById('pauseButton')
+      const fullscreenButton = document.getElementById('fullscreenButton')
+
+      let currentSlide = 0
+      let timer
+      let paused = false
+
+      function preloadImage(url) {
+        return new Promise(resolve => {
+          const image = new Image()
+
+          image.onload = resolve
+          image.onerror = resolve
+          image.src = url
+        })
+      }
+
+      async function preloadAllImages() {
+        const urls = slides.map(slide => slide.dataset.background)
+        await Promise.all(urls.map(preloadImage))
+
+        slides.forEach(slide => {
+          slide.style.backgroundImage = `url("${slide.dataset.background}")`
+        })
+      }
+
+      function showSlide(index) {
+        slides.forEach((slide, slideIndex) => {
+          slide.classList.toggle('active', slideIndex === index)
+        })
+
+        progressBar.style.transition = 'none'
+        progressBar.style.width = '0'
+
+        requestAnimationFrame(() => {
+          progressBar.style.transition = 'width 30s linear'
+          progressBar.style.width = '100%'
+        })
+      }
+
+      function startTimer() {
+        timer = setInterval(() => {
+          if (paused || currentSlide >= slides.length - 1) {
+            return
+          }
+
+          currentSlide += 1
+          showSlide(currentSlide)
+
+          if (currentSlide === slides.length - 1) {
+            clearInterval(timer)
+          }
+        }, 30000)
+      }
+
+      pauseButton.addEventListener('click', () => {
+        paused = !paused
+        pauseButton.textContent = paused ? 'Resume' : 'Pause'
+
+        if (paused) {
+          progressBar.style.transitionPlayState = 'paused'
+        } else {
+          progressBar.style.transitionPlayState = 'running'
+        }
       })
-    }
 
-    async function preloadAllImages() {
-      const urls = slides.map(slide => slide.dataset.background)
-      await Promise.all(urls.map(preloadImage))
-
-      slides.forEach(slide => {
-        slide.style.backgroundImage = `url("${slide.dataset.background}")`
-      })
-    }
-
-    function showSlide(index) {
-      slides.forEach((slide, slideIndex) => {
-        slide.classList.toggle('active', slideIndex === index)
+      fullscreenButton.addEventListener('click', () => {
+        if (document.fullscreenElement) {
+          document.exitFullscreen()
+        } else {
+          document.documentElement.requestFullscreen()
+        }
       })
 
-      progressBar.style.transition = 'none'
-      progressBar.style.width = '0'
-
-      requestAnimationFrame(() => {
-        progressBar.style.transition = 'width 30s linear'
-        progressBar.style.width = '100%'
-      })
-    }
-
-    function startTimer() {
-      timer = setInterval(() => {
-        if (paused || currentSlide >= slides.length - 1) {
-          return
+      document.addEventListener('keydown', event => {
+        if (event.key === ' ') {
+          event.preventDefault()
+          pauseButton.click()
         }
 
-        currentSlide += 1
-        showSlide(currentSlide)
-
-        if (currentSlide === slides.length - 1) {
-          clearInterval(timer)
+        if (event.key.toLowerCase() === 'f') {
+          fullscreenButton.click()
         }
-      }, 30000)
-    }
+      })
 
-    pauseButton.addEventListener('click', () => {
-      paused = !paused
-      pauseButton.textContent = paused ? 'Resume' : 'Pause'
+      async function initialize() {
+        await preloadAllImages()
 
-      if (paused) {
-        progressBar.style.transitionPlayState = 'paused'
-      } else {
-        progressBar.style.transitionPlayState = 'running'
-      }
-    })
-
-    fullscreenButton.addEventListener('click', () => {
-      if (document.fullscreenElement) {
-        document.exitFullscreen()
-      } else {
-        document.documentElement.requestFullscreen()
-      }
-    })
-
-    document.addEventListener('keydown', event => {
-      if (event.key === ' ') {
-        event.preventDefault()
-        pauseButton.click()
+        showSlide(0)
+        startTimer()
       }
 
-      if (event.key.toLowerCase() === 'f') {
-        fullscreenButton.click()
-      }
-    })
-
-    async function initialize() {
-      await preloadAllImages()
-
-      showSlide(0)
-      startTimer()
-    }
-
-    initialize()
-  </script>
-</body>
+      initialize()
+    </script>
+  </body>
 </html>
