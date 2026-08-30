@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Before Class</title>
+
+  <style>
+    :root {
+      color-scheme: dark;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+    }
+
+    body {
+      overflow: hidden;
+      background: #172625;
+      color: white;
+      font-family: Georgia, 'Times New Roman', serif;
+    }
+
+    main {
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 2rem;
+      text-align: center;
+      background-position: center;
+      background-size: cover;
+      opacity: 0;
+      transition: opacity 2s ease;
+    }
+
+    .slide::before {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(0, 0, 0, .15), rgba(0, 0, 0, .5)),
+        linear-gradient(90deg, rgba(0, 0, 0, .25), transparent 65%);
+      content: '';
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 52rem;
+      padding: 2rem 2.5rem;
+      border-radius: 1rem;
+      background: rgba(0, 0, 0, .34);
+      box-shadow: 0 1rem 4rem rgba(0, 0, 0, .2);
+      backdrop-filter: blur(2px);
+    }
+
+    h1,
+    p {
+      margin: 0;
+      font-weight: normal;
+      text-shadow: 0 .15rem .5rem rgba(0, 0, 0, .5);
+    }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      line-height: 1.1;
+    }
+
+    p {
+      margin-top: 1.25rem;
+      color: rgba(255, 255, 255, .8);
+      font-size: clamp(1.2rem, 2.8vw, 2rem);
+      line-height: 1.45;
+    }
+
+    .controls {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 3;
+      display: flex;
+      gap: .5rem;
+    }
+
+    button {
+      padding: .55rem .8rem;
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: .5rem;
+      background: rgba(0, 0, 0, .3);
+      color: white;
+      cursor: pointer;
+      font: .85rem system-ui, sans-serif;
+    }
+
+    button:hover,
+    button:focus-visible {
+      background: rgba(0, 0, 0, .55);
+    }
+
+    .progress {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      left: 1rem;
+      z-index: 3;
+      height: .2rem;
+      overflow: hidden;
+      border-radius: 1rem;
+      background: rgba(255, 255, 255, .28);
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background: rgba(255, 255, 255, .85);
+    }
+
+    .credit {
+      position: fixed;
+      right: 1rem;
+      bottom: 1.5rem;
+      z-index: 3;
+      color: rgba(255, 255, 255, .65);
+      font: .75rem system-ui, sans-serif;
+    }
+
+    .credit a {
+      color: inherit;
+    }
+
+    .loading-message {
+      position: fixed;
+      inset: 0;
+      z-index: 5;
+      display: grid;
+      place-items: center;
+      background: #172625;
+      color: rgba(255, 255, 255, .75);
+      font: 1rem system-ui, sans-serif;
+    }
+
+    body.ready .loading-message {
+      display: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body class="loading">
+  <div class="loading-message">Preparing the reflection...</div>
+
+  <main aria-live="polite">
+    <section
+      class="slide"
+      data-background="https://commons.wikimedia.org/wiki/Special:FilePath/Maroon_Bells_(11553)a.jpg?width=960">
+      <div class="content">
+        <h1>Class has begun</h1>
+        <p>Take two minutes to prepare yourself</p>
+      </div>
+    </section>
+
+    <section
+      class="slide"
+      data-background="https://commons.wikimedia.org/wiki/Special:FilePath/Sunrise_at_Maligne_lake.jpg?width=960">
+      <div class="content">
+        <h1>Remove distractions</h1>
+        <p>Put away and silence phones</p>
+        <p>Close laptops for now</p>
+      </div>
+    </section>
+
+    <section
+      class="slide"
+      data-background="https://commons.wikimedia.org/wiki/Special:FilePath/Mesa_Arch_Canyonlands_sunrise.jpg?width=960">
+      <div class="content">
+        <p>What is one thing you hope to notice, understand, or contribute today?</p>
+      </div>
+    </section>
+
+    <section
+      class="slide"
+      data-background="https://commons.wikimedia.org/wiki/Special:FilePath/151011-010_Hopetoun_Falls.jpg?width=960">
+      <div class="content">
+        <p>Bring your attention, curiosity, and patience.</p>
+      </div>
+    </section>
+
+    <section
+      class="slide"
+      data-background="https://commons.wikimedia.org/wiki/Special:FilePath/Sunrise_in_Crete_dell%27Orcia.jpg?width=960">
+      <div class="content">
+        <p>Who can think a single thought about themself, by themself?</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="controls">
+    <button id="pauseButton" type="button">Pause</button>
+    <button id="fullscreenButton" type="button">Fullscreen</button>
+  </div>
+
+  <div class="progress" aria-hidden="true">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <div class="credit">
+    Backgrounds:
+    <a
+      href="https://commons.wikimedia.org/wiki/Commons:Featured_pictures"
+      target="_blank"
+      rel="noreferrer">
+      Wikimedia Commons featured pictures
+    </a>
+  </div>
+
+  <script>
+    const slides = [...document.querySelectorAll('.slide')]
+    const progressBar = document.getElementById('progressBar')
+    const pauseButton = document.getElementById('pauseButton')
+    const fullscreenButton = document.getElementById('fullscreenButton')
+
+    let currentSlide = 0
+    let timer
+    let paused = false
+
+    function preloadImage(url) {
+      return new Promise(resolve => {
+        const image = new Image()
+
+        image.onload = resolve
+        image.onerror = resolve
+        image.src = url
+      })
+    }
+
+    async function preloadAllImages() {
+      const urls = slides.map(slide => slide.dataset.background)
+      await Promise.all(urls.map(preloadImage))
+
+      slides.forEach(slide => {
+        slide.style.backgroundImage = `url("${slide.dataset.background}")`
+      })
+    }
+
+    function showSlide(index) {
+      slides.forEach((slide, slideIndex) => {
+        slide.classList.toggle('active', slideIndex === index)
+      })
+
+      progressBar.style.transition = 'none'
+      progressBar.style.width = '0'
+
+      requestAnimationFrame(() => {
+        progressBar.style.transition = 'width 30s linear'
+        progressBar.style.width = '100%'
+      })
+    }
+
+    function startTimer() {
+      timer = setInterval(() => {
+        if (paused || currentSlide >= slides.length - 1) {
+          return
+        }
+
+        currentSlide += 1
+        showSlide(currentSlide)
+
+        if (currentSlide === slides.length - 1) {
+          clearInterval(timer)
+        }
+      }, 30000)
+    }
+
+    pauseButton.addEventListener('click', () => {
+      paused = !paused
+      pauseButton.textContent = paused ? 'Resume' : 'Pause'
+
+      if (paused) {
+        progressBar.style.transitionPlayState = 'paused'
+      } else {
+        progressBar.style.transitionPlayState = 'running'
+      }
+    })
+
+    fullscreenButton.addEventListener('click', () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen()
+      } else {
+        document.documentElement.requestFullscreen()
+      }
+    })
+
+    document.addEventListener('keydown', event => {
+      if (event.key === ' ') {
+        event.preventDefault()
+        pauseButton.click()
+      }
+
+      if (event.key.toLowerCase() === 'f') {
+        fullscreenButton.click()
+      }
+    })
+
+    async function initialize() {
+      await preloadAllImages()
+
+      showSlide(0)
+      document.body.classList.remove('loading')
+      document.body.classList.add('ready')
+      startTimer()
+    }
+
+    initialize()
+  </script>
+</body>
+</html>
