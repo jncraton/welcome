@@ -98,7 +98,7 @@
 
   <body>
     <main aria-live="polite">
-      <section class="slide" data-background="maroon-bells.jpg">
+      <section class="slide" style="background-image: url('maroon-bells.jpg')">
         <div class="content">
           <h1>Class has begun</h1>
           <p>You two minutes</p>
@@ -106,7 +106,7 @@
         </div>
       </section>
 
-      <section class="slide" data-background="sunrise-maligne.jpg">
+      <section class="slide" style="background-image: url('sunrise-maligne.jpg')">
         <div class="content">
           <h1>Remove distractions</h1>
           <p>Put away and silence phones</p>
@@ -114,19 +114,19 @@
         </div>
       </section>
 
-      <section class="slide" data-background="mesa-arch.jpg">
+      <section class="slide" style="background-image: url('mesa-arch.jpg')">
         <div class="content">
           <p>What is one thing you hope to notice, understand, or contribute today?</p>
         </div>
       </section>
 
-      <section class="slide" data-background="hopetoun-falls.jpg">
+      <section class="slide" style="background-image: url('hopetoun-falls.jpg')">
         <div class="content">
           <p>Bring your attention, curiosity, and patience.</p>
         </div>
       </section>
 
-      <section class="slide" data-background="sunrise-crete.jpg">
+      <section class="slide" style="background-image: url('sunrise-crete.jpg')">
         <div class="content">
           <p>Who can think a single thought about themself, by themself?</p>
         </div>
@@ -134,59 +134,18 @@
     </main>
 
     <script>
-      const slides = [...document.querySelectorAll('.slide')]
-
+      const slides = document.querySelectorAll('.slide')
       let currentSlide = 0
-      let timer
 
-      function preloadImage(url) {
-        return new Promise(resolve => {
-          const image = new Image()
+      slides[0].classList.add('active')
 
-          image.onload = resolve
-          image.onerror = resolve
-          image.src = url
-        })
-      }
-
-      async function preloadAllImages() {
-        const urls = slides.map(slide => slide.dataset.background)
-        await Promise.all(urls.map(preloadImage))
-
-        slides.forEach(slide => {
-          slide.style.backgroundImage = `url("${slide.dataset.background}")`
-        })
-      }
-
-      function showSlide(index) {
-        slides.forEach((slide, slideIndex) => {
-          slide.classList.toggle('active', slideIndex === index)
-        })
-      }
-
-      function startTimer() {
-        timer = setInterval(() => {
-          if (currentSlide >= slides.length - 1) {
-            return
-          }
-
+      setInterval(() => {
+        if (currentSlide < slides.length - 1) {
+          slides[currentSlide].classList.remove('active')
           currentSlide += 1
-          showSlide(currentSlide)
-
-          if (currentSlide === slides.length - 1) {
-            clearInterval(timer)
-          }
-        }, 30000)
-      }
-
-      async function initialize() {
-        await preloadAllImages()
-
-        showSlide(0)
-        startTimer()
-      }
-
-      initialize()
+          slides[currentSlide].classList.add('active')
+        }
+      }, 30000)
     </script>
   </body>
 </html>
