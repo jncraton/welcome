@@ -33,7 +33,7 @@
       height: 100%;
     }
 
-    .slide {
+    section {
       position: absolute;
       inset: 0;
       display: grid;
@@ -46,7 +46,7 @@
       transition: opacity 2s ease;
     }
 
-    .slide::before {
+    section::before {
       position: absolute;
       inset: 0;
       background:
@@ -55,11 +55,11 @@
       content: '';
     }
 
-    .slide.active {
+    section.active {
       opacity: 1;
     }
 
-    .content {
+    div {
       position: relative;
       z-index: 1;
       max-width: 52rem;
@@ -89,78 +89,8 @@
       line-height: 1.45;
     }
 
-    .controls {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 3;
-      display: flex;
-      gap: .5rem;
-    }
-
-    button {
-      padding: .55rem .8rem;
-      border: 1px solid rgba(255, 255, 255, .45);
-      border-radius: .5rem;
-      background: rgba(0, 0, 0, .3);
-      color: white;
-      cursor: pointer;
-      font: .85rem system-ui, sans-serif;
-    }
-
-    button:hover,
-    button:focus-visible {
-      background: rgba(0, 0, 0, .55);
-    }
-
-    .progress {
-      position: fixed;
-      right: 1rem;
-      bottom: 1rem;
-      left: 1rem;
-      z-index: 3;
-      height: .2rem;
-      overflow: hidden;
-      border-radius: 1rem;
-      background: rgba(255, 255, 255, .28);
-    }
-
-    .progress-bar {
-      width: 0;
-      height: 100%;
-      background: rgba(255, 255, 255, .85);
-    }
-
-    .credit {
-      position: fixed;
-      right: 1rem;
-      bottom: 1.5rem;
-      z-index: 3;
-      color: rgba(255, 255, 255, .65);
-      font: .75rem system-ui, sans-serif;
-    }
-
-    .credit a {
-      color: inherit;
-    }
-
-    .loading-message {
-      position: fixed;
-      inset: 0;
-      z-index: 5;
-      display: grid;
-      place-items: center;
-      background: #172625;
-      color: rgba(255, 255, 255, .75);
-      font: 1rem system-ui, sans-serif;
-    }
-
-    body.ready .loading-message {
-      display: none;
-    }
-
     @media (prefers-reduced-motion: reduce) {
-      .slide {
+      section {
         transition: none;
       }
     }
