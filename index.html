@@ -97,9 +97,7 @@
   </style>
 </head>
 
-<body class="loading">
-  <div class="loading-message">Preparing the reflection...</div>
-
+<body>
   <main aria-live="polite">
     <section
       class="slide"
@@ -256,8 +254,6 @@
       await preloadAllImages()
 
       showSlide(0)
-      document.body.classList.remove('loading')
-      document.body.classList.add('ready')
       startTimer()
     }
 
